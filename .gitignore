@@ -1,0 +1,38 @@
+# Roblox Studio
+*.rbxl
+*.rbxl.lock
+*.rbxlx
+*.rbxlx.lock
+*.rbxm
+*.rbxmx
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Node (if using rojo or other tools)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Rojo
+*.rbxlx.lock
+*.rbxl.lock
+default.project.json.lock
