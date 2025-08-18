@@ -403,7 +403,7 @@ This is an educational project created as a tribute to the classic Pac-Man game.
 ## 👏 Credits
 
 ### Development Team
-- **Lead Developer**: [Your Name]
+- **Lead Developer**: Evyatar Bluzer
 - **Game Design**: Classic arcade inspiration
 - **Documentation**: Comprehensive guides included
 
