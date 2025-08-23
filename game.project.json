@@ -1,0 +1,79 @@
+{
+  "name": "PacBlox",
+  "tree": {
+    "$className": "DataModel",
+    "Lighting": {
+      "$className": "Lighting",
+      "$properties": {
+        "Ambient": [0, 0, 0],
+        "Brightness": 1,
+        "ColorShift_Bottom": [0, 0, 0],
+        "ColorShift_Top": [0, 0, 0],
+        "EnvironmentDiffuseScale": 0.2,
+        "EnvironmentSpecularScale": 0.2,
+        "GlobalShadows": false,
+        "OutdoorAmbient": [0.5, 0.5, 0.5],
+        "ShadowSoftness": 0,
+        "Technology": "Legacy"
+      }
+    },
+    "ReplicatedStorage": {
+      "$className": "ReplicatedStorage",
+      "Shared": {
+        "$path": "src/shared"
+      }
+    },
+    "ServerScriptService": {
+      "$className": "ServerScriptService",
+      "MainServer": {
+        "$path": "src/server/MainServer.lua"
+      },
+      "GameManager": {
+        "$path": "src/server/GameManager.lua"
+      },
+      "MazeGenerator": {
+        "$path": "src/server/MazeGenerator.lua"
+      },
+      "PlayerController": {
+        "$path": "src/server/PlayerController.lua"
+      },
+      "GhostAI": {
+        "$path": "src/server/GhostAI.lua"
+      },
+      "PelletManager": {
+        "$path": "src/server/PelletManager.lua"
+      },
+      "SoundManager": {
+        "$path": "src/server/SoundManager.lua"
+      }
+    },
+    "StarterPlayer": {
+      "$className": "StarterPlayer",
+      "$properties": {
+        "CharacterWalkSpeed": 0,
+        "EnableMouseLockOption": false,
+        "CameraMode": "Classic",
+        "DevComputerCameraMode": "Classic",
+        "DevTouchCameraMode": "Classic"
+      },
+      "StarterPlayerScripts": {
+        "$className": "StarterPlayerScripts",
+        "MainClient": {
+          "$path": "src/client/MainClient.lua"
+        },
+        "InputHandler": {
+          "$path": "src/client/InputHandler.lua"
+        },
+        "UIManager": {
+          "$path": "src/client/UIManager.lua"
+        }
+      }
+    },
+    "Workspace": {
+      "$className": "Workspace",
+      "$properties": {
+        "Name": "Workspace"
+      }
+    }
+  }
+}
