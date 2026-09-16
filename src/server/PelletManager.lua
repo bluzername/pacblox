@@ -6,7 +6,7 @@ local RunService = game:GetService("RunService")
 
 PelletManager.PELLET_SCORE = 10
 PelletManager.POWER_PELLET_SCORE = 50
-PelletManager.POWER_UP_DURATION = 10  -- seconds
+PelletManager.POWER_UP_DURATION = 10 -- seconds
 
 local totalPellets = 0
 local collectedPellets = 0
@@ -16,17 +16,17 @@ local pelletCollectionCallbacks = {}
 function PelletManager.init(mazeFolder, pelletCount)
     totalPellets = pelletCount
     collectedPellets = 0
-    
+
     -- Setup collision detection for all pellets
     local pellets = mazeFolder:FindFirstChild("Pellets")
     local powerPellets = mazeFolder:FindFirstChild("PowerPellets")
-    
+
     if pellets then
         for _, pellet in pairs(pellets:GetChildren()) do
             PelletManager.setupPelletCollision(pellet, false)
         end
     end
-    
+
     if powerPellets then
         for _, powerPellet in pairs(powerPellets:GetChildren()) do
             PelletManager.setupPelletCollision(powerPellet, true)
@@ -45,7 +45,7 @@ function PelletManager.setupPelletCollision(pellet, isPowerPellet)
     collisionPart.CanCollide = false
     collisionPart.Transparency = 1
     collisionPart.Parent = pellet
-    
+
     -- Store reference to actual pellet
     collisionPart:SetAttribute("IsPowerPellet", isPowerPellet)
     collisionPart:SetAttribute("PelletPart", pellet)
@@ -54,14 +54,20 @@ end
 -- Check for pellet collection
 function PelletManager.checkCollections(playerController, gameManager)
     for player, playerData in pairs(playerController.players) do
-        if not playerData.isAlive then continue end
-        
+        if not playerData.isAlive then
+            continue
+        end
+
         local character = playerData.character
-        if not character then continue end
-        
+        if not character then
+            continue
+        end
+
         local body = character:FindFirstChild("Body")
-        if not body then continue end
-        
+        if not body then
+            continue
+        end
+
         -- Check regular pellets
         local pellets = workspace:FindFirstChild("Maze"):FindFirstChild("Pellets")
         if pellets then
@@ -74,7 +80,7 @@ function PelletManager.checkCollections(playerController, gameManager)
                 end
             end
         end
-        
+
         -- Check power pellets
         local powerPellets = workspace:FindFirstChild("Maze"):FindFirstChild("PowerPellets")
         if powerPellets then
@@ -93,16 +99,18 @@ end
 -- Handle pellet collection
 function PelletManager.collectPellet(player, pellet, isPowerPellet, playerController, gameManager)
     -- Prevent double collection
-    if pellet:GetAttribute("Collected") then return end
+    if pellet:GetAttribute("Collected") then
+        return
+    end
     pellet:SetAttribute("Collected", true)
-    
+
     -- Add score
     local score = isPowerPellet and PelletManager.POWER_PELLET_SCORE or PelletManager.PELLET_SCORE
     local newScore = playerController.addScore(player, score)
-    
+
     -- Update pellet count
     collectedPellets = collectedPellets + 1
-    
+
     -- Animate pellet disappearance
     spawn(function()
         for i = 1, 10 do
@@ -112,7 +120,7 @@ function PelletManager.collectPellet(player, pellet, isPowerPellet, playerContro
         end
         pellet:Destroy()
     end)
-    
+
     -- Handle power pellet effect
     if isPowerPellet then
         playerController.activatePowerUp(player, PelletManager.POWER_UP_DURATION)
@@ -121,12 +129,12 @@ function PelletManager.collectPellet(player, pellet, isPowerPellet, playerContro
             gameManager.activatePowerMode(PelletManager.POWER_UP_DURATION)
         end
     end
-    
+
     -- Fire callbacks
     for _, callback in pairs(pelletCollectionCallbacks) do
         callback(player, score, newScore, isPowerPellet)
     end
-    
+
     -- Check win condition
     if collectedPellets >= totalPellets then
         if gameManager then

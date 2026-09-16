@@ -19,7 +19,7 @@ Types.PlayerData = {
     lives = 3,
     isAlive = true,
     isPoweredUp = false,
-    powerUpTimeLeft = 0
+    powerUpTimeLeft = 0,
 }
 
 -- Ghost data structure
@@ -38,16 +38,16 @@ Types.GhostData = {
     color = Constants.Colors.GHOST_BLINKY,
     scatterTarget = Vector3.new(0, 0, 0),
     isInHouse = false,
-    exitTimer = 0
+    exitTimer = 0,
 }
 
--- Maze cell data structure  
+-- Maze cell data structure
 Types.MazeCell = {
     type = Constants.CellType.EMPTY,
     position = Vector3.new(0, 0, 0),
     hasItem = false,
     itemType = nil,
-    part = nil
+    part = nil,
 }
 
 -- Game state data structure
@@ -62,7 +62,7 @@ Types.GameState = {
     isPowerUpActive = false,
     powerUpTimeLeft = 0,
     level = 1,
-    globalScore = 0
+    globalScore = 0,
 }
 
 -- Pathfinding node
@@ -72,7 +72,7 @@ Types.PathNode = {
     hCost = 0,
     fCost = 0,
     parent = nil,
-    walkable = true
+    walkable = true,
 }
 
 -- Sound data structure
@@ -83,7 +83,7 @@ Types.SoundData = {
     pitch = 1.0,
     looped = false,
     sound = nil,
-    isPlaying = false
+    isPlaying = false,
 }
 
 -- UI elements data
@@ -93,14 +93,14 @@ Types.UIElementData = {
     parent = nil,
     properties = {},
     children = {},
-    element = nil
+    element = nil,
 }
 
 -- Input data structure
 Types.InputData = {
     direction = Constants.Direction.NONE,
     timestamp = 0,
-    processed = false
+    processed = false,
 }
 
 -- Animation data
@@ -112,7 +112,7 @@ Types.AnimationData = {
     elapsed = 0,
     easingFunction = nil,
     onComplete = nil,
-    isPlaying = false
+    isPlaying = false,
 }
 
 -- Pellet data structure
@@ -122,7 +122,7 @@ Types.PelletData = {
     type = Constants.CellType.PELLET,
     score = Constants.PELLET_SCORE,
     part = nil,
-    collected = false
+    collected = false,
 }
 
 -- Constructor functions for creating new instances
@@ -146,7 +146,7 @@ function Types.newGhostData(id, personality)
     end
     data.id = id or ""
     data.personality = personality or Constants.GhostPersonality.BLINKY
-    
+
     -- Set color based on personality
     if personality == Constants.GhostPersonality.BLINKY then
         data.color = Constants.Colors.GHOST_BLINKY
@@ -157,7 +157,7 @@ function Types.newGhostData(id, personality)
     elseif personality == Constants.GhostPersonality.CLYDE then
         data.color = Constants.Colors.GHOST_CLYDE
     end
-    
+
     return data
 end
 
@@ -168,12 +168,12 @@ function Types.newMazeCell(cellType, position)
     end
     data.type = cellType or Constants.CellType.EMPTY
     data.position = position or Vector3.new(0, 0, 0)
-    
+
     if cellType == Constants.CellType.PELLET or cellType == Constants.CellType.POWER_PELLET then
         data.hasItem = true
         data.itemType = cellType
     end
-    
+
     return data
 end
 
@@ -197,11 +197,11 @@ function Types.newPelletData(position, gridPosition, pelletType)
     data.position = position or Vector3.new(0, 0, 0)
     data.gridPosition = gridPosition or Vector3.new(0, 0, 0)
     data.type = pelletType or Constants.CellType.PELLET
-    
+
     if pelletType == Constants.CellType.POWER_PELLET then
         data.score = Constants.POWER_PELLET_SCORE
     end
-    
+
     return data
 end
 

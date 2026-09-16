@@ -8,7 +8,9 @@ local StarterGui = game:GetService("StarterGui")
 local player = Players.LocalPlayer
 
 -- Wait for character to load
-repeat wait() until player.Character
+repeat
+    wait()
+until player.Character
 
 print("PacBlox Client Starting for " .. player.Name)
 

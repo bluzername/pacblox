@@ -12,7 +12,7 @@ Constants.MAZE_HEIGHT = 21
 Constants.PLAYER_SPEED = 16
 Constants.PLAYER_TURN_SPEED = 0.1
 
--- Ghost Settings  
+-- Ghost Settings
 Constants.GHOST_SPEED = 14
 Constants.GHOST_FRIGHTENED_SPEED = 8
 Constants.GHOST_EATEN_SPEED = 32
@@ -35,41 +35,41 @@ Constants.CellType = {
     PELLET = 2,
     POWER_PELLET = 3,
     EMPTY = 0,
-    GHOST_HOUSE = 4
+    GHOST_HOUSE = 4,
 }
 
 -- Game States
 Constants.GameState = {
     WAITING = "Waiting",
     PLAYING = "Playing",
-    POWER_UP = "PowerUp", 
+    POWER_UP = "PowerUp",
     VICTORY = "Victory",
-    GAME_OVER = "GameOver"
+    GAME_OVER = "GameOver",
 }
 
 -- Ghost States
 Constants.GhostState = {
     SCATTER = "Scatter",
-    CHASE = "Chase", 
+    CHASE = "Chase",
     FRIGHTENED = "Frightened",
-    EATEN = "Eaten"
+    EATEN = "Eaten",
 }
 
 -- Ghost Personalities
 Constants.GhostPersonality = {
-    BLINKY = "Blinky",  -- Red - Direct pursuit
-    PINKY = "Pinky",    -- Pink - Ambush ahead  
-    INKY = "Inky",      -- Cyan - Unpredictable
-    CLYDE = "Clyde"     -- Orange - Shy
+    BLINKY = "Blinky", -- Red - Direct pursuit
+    PINKY = "Pinky", -- Pink - Ambush ahead
+    INKY = "Inky", -- Cyan - Unpredictable
+    CLYDE = "Clyde", -- Orange - Shy
 }
 
 -- Directions
 Constants.Direction = {
     UP = Vector3.new(0, 0, 1),
     DOWN = Vector3.new(0, 0, -1),
-    LEFT = Vector3.new(-1, 0, 0), 
+    LEFT = Vector3.new(-1, 0, 0),
     RIGHT = Vector3.new(1, 0, 0),
-    NONE = Vector3.new(0, 0, 0)
+    NONE = Vector3.new(0, 0, 0),
 }
 
 -- Colors
@@ -83,18 +83,18 @@ Constants.Colors = {
     GHOST_INKY = Color3.fromRGB(0, 255, 255),
     GHOST_CLYDE = Color3.fromRGB(255, 184, 82),
     GHOST_FRIGHTENED = Color3.fromRGB(0, 0, 255),
-    BACKGROUND = Color3.fromRGB(0, 0, 0)
+    BACKGROUND = Color3.fromRGB(0, 0, 0),
 }
 
 -- Sound IDs (placeholders - replace with actual Roblox sound IDs)
 Constants.SoundIds = {
     PELLET_COLLECT = "rbxassetid://131961136",
-    POWER_UP = "rbxassetid://131961136", 
+    POWER_UP = "rbxassetid://131961136",
     GHOST_EATEN = "rbxassetid://131961136",
     DEATH = "rbxassetid://131961136",
     VICTORY = "rbxassetid://131961136",
     GAME_START = "rbxassetid://131961136",
-    GHOST_SIREN = "rbxassetid://131961136"
+    GHOST_SIREN = "rbxassetid://131961136",
 }
 
 return Constants

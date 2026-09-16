@@ -13,10 +13,10 @@ function SoundManager.init()
     local soundsFolder = Instance.new("Folder")
     soundsFolder.Name = "GameSounds"
     soundsFolder.Parent = SoundService
-    
+
     -- Create sound objects (placeholders - actual sound IDs would be needed)
     SoundManager.createSounds(soundsFolder)
-    
+
     -- Create RemoteEvent for client sound playback
     local soundEvent = Instance.new("RemoteEvent")
     soundEvent.Name = "PlaySound"
@@ -33,7 +33,7 @@ function SoundManager.createSounds(parent)
     -- pelletSound.SoundId = "rbxassetid://XXXXXXXXX" -- Replace with actual sound ID
     pelletSound.Parent = parent
     SoundManager.sounds.pelletCollect = pelletSound
-    
+
     -- Power pellet collection sound
     local powerPelletSound = Instance.new("Sound")
     powerPelletSound.Name = "PowerPelletCollect"
@@ -42,7 +42,7 @@ function SoundManager.createSounds(parent)
     -- powerPelletSound.SoundId = "rbxassetid://XXXXXXXXX" -- Replace with actual sound ID
     powerPelletSound.Parent = parent
     SoundManager.sounds.powerPelletCollect = powerPelletSound
-    
+
     -- Ghost eaten sound
     local ghostEatenSound = Instance.new("Sound")
     ghostEatenSound.Name = "GhostEaten"
@@ -51,7 +51,7 @@ function SoundManager.createSounds(parent)
     -- ghostEatenSound.SoundId = "rbxassetid://XXXXXXXXX" -- Replace with actual sound ID
     ghostEatenSound.Parent = parent
     SoundManager.sounds.ghostEaten = ghostEatenSound
-    
+
     -- Player death sound
     local deathSound = Instance.new("Sound")
     deathSound.Name = "PlayerDeath"
@@ -60,7 +60,7 @@ function SoundManager.createSounds(parent)
     -- deathSound.SoundId = "rbxassetid://XXXXXXXXX" -- Replace with actual sound ID
     deathSound.Parent = parent
     SoundManager.sounds.playerDeath = deathSound
-    
+
     -- Game start sound
     local startSound = Instance.new("Sound")
     startSound.Name = "GameStart"
@@ -69,7 +69,7 @@ function SoundManager.createSounds(parent)
     -- startSound.SoundId = "rbxassetid://XXXXXXXXX" -- Replace with actual sound ID
     startSound.Parent = parent
     SoundManager.sounds.gameStart = startSound
-    
+
     -- Victory sound
     local victorySound = Instance.new("Sound")
     victorySound.Name = "Victory"
@@ -78,7 +78,7 @@ function SoundManager.createSounds(parent)
     -- victorySound.SoundId = "rbxassetid://XXXXXXXXX" -- Replace with actual sound ID
     victorySound.Parent = parent
     SoundManager.sounds.victory = victorySound
-    
+
     -- Game over sound
     local gameOverSound = Instance.new("Sound")
     gameOverSound.Name = "GameOver"
@@ -87,7 +87,7 @@ function SoundManager.createSounds(parent)
     -- gameOverSound.SoundId = "rbxassetid://XXXXXXXXX" -- Replace with actual sound ID
     gameOverSound.Parent = parent
     SoundManager.sounds.gameOver = gameOverSound
-    
+
     -- Background music
     local bgMusic = Instance.new("Sound")
     bgMusic.Name = "BackgroundMusic"
@@ -97,7 +97,7 @@ function SoundManager.createSounds(parent)
     -- bgMusic.SoundId = "rbxassetid://XXXXXXXXX" -- Replace with actual sound ID
     bgMusic.Parent = parent
     SoundManager.sounds.backgroundMusic = bgMusic
-    
+
     -- Power-up music
     local powerMusic = Instance.new("Sound")
     powerMusic.Name = "PowerUpMusic"
@@ -107,7 +107,7 @@ function SoundManager.createSounds(parent)
     -- powerMusic.SoundId = "rbxassetid://XXXXXXXXX" -- Replace with actual sound ID
     powerMusic.Parent = parent
     SoundManager.sounds.powerUpMusic = powerMusic
-    
+
     -- Movement sound (continuous)
     local moveSound = Instance.new("Sound")
     moveSound.Name = "Movement"
@@ -126,7 +126,7 @@ function SoundManager.playSound(soundName, playOnClient)
         warn("Sound not found: " .. soundName)
         return
     end
-    
+
     if playOnClient then
         -- Send to all clients to play locally
         local soundEvent = ReplicatedStorage:FindFirstChild("PlaySound")
