@@ -36,3 +36,9 @@ yarn.lock
 *.rbxlx.lock
 *.rbxl.lock
 default.project.json.lock
+# Locally downloaded lint/build binaries
+tools/
+
+# selene roblox std cache
+roblox.toml
+roblox.yml

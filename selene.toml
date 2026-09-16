@@ -1,0 +1,4 @@
+std = "roblox"
+
+[lints]
+# The codebase is plain Luau without type annotations; keep the default lint set.
