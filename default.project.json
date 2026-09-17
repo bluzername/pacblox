@@ -53,8 +53,8 @@
         "CharacterWalkSpeed": 0,
         "EnableMouseLockOption": false,
         "CameraMode": "Classic",
-        "DevComputerCameraMode": "Classic",
-        "DevTouchCameraMode": "Classic"
+        "DevComputerCameraMovementMode": "Classic",
+        "DevTouchCameraMovementMode": "Classic"
       },
       "StarterPlayerScripts": {
         "$className": "StarterPlayerScripts",
@@ -70,10 +70,7 @@
       }
     },
     "Workspace": {
-      "$className": "Workspace",
-      "$properties": {
-        "Name": "Workspace"
-      }
+      "$className": "Workspace"
     }
   }
 }
