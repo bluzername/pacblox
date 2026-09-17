@@ -86,15 +86,20 @@ Constants.Colors = {
     BACKGROUND = Color3.fromRGB(0, 0, 0),
 }
 
--- Sound IDs (placeholders - replace with actual Roblox sound IDs)
-Constants.SoundIds = {
-    PELLET_COLLECT = "rbxassetid://131961136",
-    POWER_UP = "rbxassetid://131961136",
-    GHOST_EATEN = "rbxassetid://131961136",
-    DEATH = "rbxassetid://131961136",
-    VICTORY = "rbxassetid://131961136",
-    GAME_START = "rbxassetid://131961136",
-    GHOST_SIREN = "rbxassetid://131961136",
+-- Sound asset ids, keyed by the names SoundManager uses.
+-- Sounds are optional: leave an entry empty and that sound is never played.
+-- To enable one, paste a Roblox audio asset id, e.g. "rbxassetid://1234567890".
+Constants.SOUND_IDS = {
+    pelletCollect = "",
+    powerPelletCollect = "",
+    ghostEaten = "",
+    playerDeath = "",
+    gameStart = "",
+    victory = "",
+    gameOver = "",
+    backgroundMusic = "",
+    powerUpMusic = "",
+    movement = "",
 }
 
 return Constants
