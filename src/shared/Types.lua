@@ -127,10 +127,7 @@ Types.PelletData = {
 
 -- Constructor functions for creating new instances
 function Types.newPlayerData(player)
-    local data = {}
-    for k, v in pairs(Types.PlayerData) do
-        data[k] = v
-    end
+    local data = table.clone(Types.PlayerData)
     if player then
         data.userId = player.UserId
         data.displayName = player.DisplayName
@@ -140,10 +137,7 @@ function Types.newPlayerData(player)
 end
 
 function Types.newGhostData(id, personality)
-    local data = {}
-    for k, v in pairs(Types.GhostData) do
-        data[k] = v
-    end
+    local data = table.clone(Types.GhostData)
     data.id = id or ""
     data.personality = personality or Constants.GhostPersonality.BLINKY
 
@@ -162,10 +156,7 @@ function Types.newGhostData(id, personality)
 end
 
 function Types.newMazeCell(cellType, position)
-    local data = {}
-    for k, v in pairs(Types.MazeCell) do
-        data[k] = v
-    end
+    local data = table.clone(Types.MazeCell)
     data.type = cellType or Constants.CellType.EMPTY
     data.position = position or Vector3.new(0, 0, 0)
 
@@ -190,10 +181,7 @@ function Types.newGameState()
 end
 
 function Types.newPelletData(position, gridPosition, pelletType)
-    local data = {}
-    for k, v in pairs(Types.PelletData) do
-        data[k] = v
-    end
+    local data = table.clone(Types.PelletData)
     data.position = position or Vector3.new(0, 0, 0)
     data.gridPosition = gridPosition or Vector3.new(0, 0, 0)
     data.type = pelletType or Constants.CellType.PELLET

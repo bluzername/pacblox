@@ -2,7 +2,6 @@
 -- Handles player character creation and server-side movement validation
 
 local PlayerController = {}
-local RunService = game:GetService("RunService")
 
 PlayerController.MOVE_SPEED = 16 -- Studs per second
 PlayerController.players = {} -- Track active players

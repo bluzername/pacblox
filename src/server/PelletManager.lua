@@ -2,7 +2,6 @@
 -- Manages pellet collection and scoring system
 
 local PelletManager = {}
-local RunService = game:GetService("RunService")
 
 PelletManager.PELLET_SCORE = 10
 PelletManager.POWER_PELLET_SCORE = 50

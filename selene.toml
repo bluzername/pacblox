@@ -1,4 +1,6 @@
 std = "roblox"
 
 [lints]
-# The codebase is plain Luau without type annotations; keep the default lint set.
+# UIManager and InputHandler build every UDim2 with UDim2.new for readability;
+# rewriting them to fromScale/fromOffset is cosmetic churn, so this lint is off.
+roblox_manual_fromscale_or_fromoffset = "allow"

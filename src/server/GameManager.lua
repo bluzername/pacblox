@@ -112,7 +112,7 @@ function GameManager.startGame()
     GameManager.modules.PelletManager.init(maze, totalPellets)
 
     -- Setup pellet collection callback
-    GameManager.modules.PelletManager.onPelletCollected(function(player, points, totalScore, isPowerPellet)
+    GameManager.modules.PelletManager.onPelletCollected(function(player, _points, totalScore, isPowerPellet)
         -- Update client UI
         local scoreUpdateEvent = ReplicatedStorage:FindFirstChild("ScoreUpdate")
         if scoreUpdateEvent then
@@ -157,7 +157,7 @@ function GameManager.startGameLoop()
         -- Update ghost AI
         GameManager.modules.GhostAI.updateStates(deltaTime)
 
-        for ghost, ghostData in pairs(GameManager.modules.GhostAI.ghosts) do
+        for _, ghostData in pairs(GameManager.modules.GhostAI.ghosts) do
             local caughtPlayer =
                 GameManager.modules.GhostAI.updateGhost(ghostData, GameManager.modules.PlayerController)
 

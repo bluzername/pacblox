@@ -2,8 +2,6 @@
 -- AI controller for ghost enemies with different personalities
 
 local GhostAI = {}
-local RunService = game:GetService("RunService")
-local PathfindingService = game:GetService("PathfindingService")
 
 GhostAI.GHOST_SPEED = 14 -- Slightly slower than player
 GhostAI.FRIGHTENED_SPEED = 8 -- Speed when player has power-up
@@ -33,7 +31,7 @@ GhostAI.powerMode = false
 GhostAI.powerTimer = 0
 
 -- Create a ghost character
-function GhostAI.createGhost(name, color, personality)
+function GhostAI.createGhost(name, color, _personality)
     local ghost = Instance.new("Model")
     ghost.Name = name
 
@@ -233,7 +231,7 @@ function GhostAI.updateGhost(ghostData, playerController)
     local playerPosition = nil
     local playerDirection = Vector3.new(0, 0, 0)
 
-    for player, pData in pairs(playerController.players) do
+    for _, pData in pairs(playerController.players) do
         if pData.isAlive and pData.character then
             playerPosition = pData.character.PrimaryPart.Position
             playerDirection = pData.direction
@@ -354,7 +352,7 @@ function GhostAI.activatePowerMode(duration)
     GhostAI.powerMode = true
     GhostAI.powerTimer = duration
 
-    for ghost, ghostData in pairs(GhostAI.ghosts) do
+    for _, ghostData in pairs(GhostAI.ghosts) do
         if ghostData.state ~= GhostState.EATEN then
             ghostData.state = GhostState.FRIGHTENED
 
@@ -377,7 +375,7 @@ function GhostAI.updateStates(deltaTime)
             GhostAI.powerMode = false
 
             -- Return ghosts to normal state
-            for ghost, ghostData in pairs(GhostAI.ghosts) do
+            for _, ghostData in pairs(GhostAI.ghosts) do
                 if ghostData.state == GhostState.FRIGHTENED then
                     ghostData.state = GhostAI.globalState
 
@@ -400,7 +398,7 @@ function GhostAI.updateStates(deltaTime)
                 GhostAI.stateTimer = 0
 
                 -- Update all non-frightened/eaten ghosts
-                for ghost, ghostData in pairs(GhostAI.ghosts) do
+                for _, ghostData in pairs(GhostAI.ghosts) do
                     if ghostData.state == GhostState.SCATTER then
                         ghostData.state = GhostState.CHASE
                     end
@@ -412,7 +410,7 @@ function GhostAI.updateStates(deltaTime)
                 GhostAI.stateTimer = 0
 
                 -- Update all non-frightened/eaten ghosts
-                for ghost, ghostData in pairs(GhostAI.ghosts) do
+                for _, ghostData in pairs(GhostAI.ghosts) do
                     if ghostData.state == GhostState.CHASE then
                         ghostData.state = GhostState.SCATTER
                     end
@@ -424,7 +422,7 @@ end
 
 -- Clean up ghosts
 function GhostAI.cleanup()
-    for ghost, ghostData in pairs(GhostAI.ghosts) do
+    for _, ghostData in pairs(GhostAI.ghosts) do
         if ghostData.model then
             ghostData.model:Destroy()
         end

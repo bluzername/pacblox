@@ -2,8 +2,6 @@
 -- Main server script that initializes and runs the PacBlox game
 
 local ServerScriptService = game:GetService("ServerScriptService")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local RunService = game:GetService("RunService")
 
 -- Wait for all modules to load
 print("PacBlox Server Starting...")
