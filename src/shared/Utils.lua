@@ -29,25 +29,21 @@ end
 
 -- Grid utilities
 function Utils.worldToGrid(worldPos)
-    return Vector3.new(
-        Utils.round(worldPos.X / Constants.GRID_SIZE),
-        0,
-        Utils.round(worldPos.Z / Constants.GRID_SIZE)
-    )
+    return Vector3.new(Utils.round(worldPos.X / Constants.GRID_SIZE), 0, Utils.round(worldPos.Z / Constants.GRID_SIZE))
 end
 
 function Utils.gridToWorld(gridPos)
-    return Vector3.new(
-        gridPos.X * Constants.GRID_SIZE,
-        gridPos.Y,
-        gridPos.Z * Constants.GRID_SIZE
-    )
+    return Vector3.new(gridPos.X * Constants.GRID_SIZE, gridPos.Y, gridPos.Z * Constants.GRID_SIZE)
 end
 
 function Utils.isValidGridPosition(x, z, mazeData)
-    return x >= 1 and x <= Constants.MAZE_WIDTH and 
-           z >= 1 and z <= Constants.MAZE_HEIGHT and
-           mazeData and mazeData[z] and mazeData[z][x] ~= Constants.CellType.WALL
+    return x >= 1
+        and x <= Constants.MAZE_WIDTH
+        and z >= 1
+        and z <= Constants.MAZE_HEIGHT
+        and mazeData
+        and mazeData[z]
+        and mazeData[z][x] ~= Constants.CellType.WALL
 end
 
 -- Direction utilities
@@ -64,7 +60,7 @@ function Utils.getRandomDirection()
         Constants.Direction.UP,
         Constants.Direction.DOWN,
         Constants.Direction.LEFT,
-        Constants.Direction.RIGHT
+        Constants.Direction.RIGHT,
     }
     return directions[math.random(1, #directions)]
 end
@@ -140,7 +136,7 @@ end
 function Utils.deepCopy(original)
     local originalType = type(original)
     local copy
-    if originalType == 'table' then
+    if originalType == "table" then
         copy = {}
         for originalKey, originalValue in next, original, nil do
             copy[Utils.deepCopy(originalKey)] = Utils.deepCopy(originalValue)

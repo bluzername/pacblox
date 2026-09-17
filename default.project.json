@@ -26,7 +26,7 @@
     "ServerScriptService": {
       "$className": "ServerScriptService",
       "MainServer": {
-        "$path": "src/server/MainServer.lua"
+        "$path": "src/server/MainServer.server.lua"
       },
       "GameManager": {
         "$path": "src/server/GameManager.lua"
@@ -53,13 +53,13 @@
         "CharacterWalkSpeed": 0,
         "EnableMouseLockOption": false,
         "CameraMode": "Classic",
-        "DevComputerCameraMode": "Classic",
-        "DevTouchCameraMode": "Classic"
+        "DevComputerCameraMovementMode": "Classic",
+        "DevTouchCameraMovementMode": "Classic"
       },
       "StarterPlayerScripts": {
         "$className": "StarterPlayerScripts",
         "MainClient": {
-          "$path": "src/client/MainClient.lua"
+          "$path": "src/client/MainClient.client.lua"
         },
         "InputHandler": {
           "$path": "src/client/InputHandler.lua"
@@ -70,10 +70,7 @@
       }
     },
     "Workspace": {
-      "$className": "Workspace",
-      "$properties": {
-        "Name": "Workspace"
-      }
+      "$className": "Workspace"
     }
   }
 }

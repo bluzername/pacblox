@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install rojo, stylua, selene (pinned in aftman.toml)
+        uses: ok-nick/setup-aftman@v0.4.2
+
+      - name: Validate Rojo project file
+        run: jq -e .tree default.project.json > /dev/null
+
+      - name: Check formatting
+        run: stylua --check src
+
+      - name: Lint
+        run: selene src
+
+      - name: Build place file
+        run: rojo build default.project.json --output PacBlox.rbxl

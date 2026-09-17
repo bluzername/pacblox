@@ -11,29 +11,31 @@ local moveEvent -- Will be set when RemoteEvent is created
 
 -- Movement directions mapped to keys
 local keyDirections = {
-    [Enum.KeyCode.W] = Vector3.new(0, 0, -1),      -- Up
-    [Enum.KeyCode.S] = Vector3.new(0, 0, 1),       -- Down
-    [Enum.KeyCode.A] = Vector3.new(-1, 0, 0),      -- Left
-    [Enum.KeyCode.D] = Vector3.new(1, 0, 0),       -- Right
-    [Enum.KeyCode.Up] = Vector3.new(0, 0, -1),     -- Arrow Up
-    [Enum.KeyCode.Down] = Vector3.new(0, 0, 1),    -- Arrow Down
-    [Enum.KeyCode.Left] = Vector3.new(-1, 0, 0),   -- Arrow Left
-    [Enum.KeyCode.Right] = Vector3.new(1, 0, 0),   -- Arrow Right
+    [Enum.KeyCode.W] = Vector3.new(0, 0, -1), -- Up
+    [Enum.KeyCode.S] = Vector3.new(0, 0, 1), -- Down
+    [Enum.KeyCode.A] = Vector3.new(-1, 0, 0), -- Left
+    [Enum.KeyCode.D] = Vector3.new(1, 0, 0), -- Right
+    [Enum.KeyCode.Up] = Vector3.new(0, 0, -1), -- Arrow Up
+    [Enum.KeyCode.Down] = Vector3.new(0, 0, 1), -- Arrow Down
+    [Enum.KeyCode.Left] = Vector3.new(-1, 0, 0), -- Arrow Left
+    [Enum.KeyCode.Right] = Vector3.new(1, 0, 0), -- Arrow Right
 }
 
 -- Initialize input handler
 function InputHandler.init()
     -- Wait for RemoteEvent to be created
     moveEvent = ReplicatedStorage:WaitForChild("PlayerMove")
-    
+
     -- Connect input handlers
     UserInputService.InputBegan:Connect(InputHandler.onInputBegan)
 end
 
 -- Handle key press
 function InputHandler.onInputBegan(input, gameProcessed)
-    if gameProcessed then return end
-    
+    if gameProcessed then
+        return
+    end
+
     local direction = keyDirections[input.KeyCode]
     if direction and moveEvent then
         -- Send movement direction to server
@@ -49,12 +51,12 @@ function InputHandler.setupMobileControls()
     screenGui.Name = "MobileControls"
     screenGui.ResetOnSpawn = false
     screenGui.Parent = playerGui
-    
+
     -- Create directional buttons
     local buttonSize = UDim2.new(0, 60, 0, 60)
     local centerX = 0.15
     local centerY = 0.7
-    
+
     -- Up button
     local upButton = InputHandler.createControlButton("Up", UDim2.new(centerX, 0, centerY - 0.1, 0), buttonSize, "↑")
     upButton.Parent = screenGui
@@ -63,27 +65,30 @@ function InputHandler.setupMobileControls()
             moveEvent:FireServer(Vector3.new(0, 0, -1))
         end
     end)
-    
+
     -- Down button
-    local downButton = InputHandler.createControlButton("Down", UDim2.new(centerX, 0, centerY + 0.1, 0), buttonSize, "↓")
+    local downButton =
+        InputHandler.createControlButton("Down", UDim2.new(centerX, 0, centerY + 0.1, 0), buttonSize, "↓")
     downButton.Parent = screenGui
     downButton.MouseButton1Click:Connect(function()
         if moveEvent then
             moveEvent:FireServer(Vector3.new(0, 0, 1))
         end
     end)
-    
+
     -- Left button
-    local leftButton = InputHandler.createControlButton("Left", UDim2.new(centerX - 0.08, 0, centerY, 0), buttonSize, "←")
+    local leftButton =
+        InputHandler.createControlButton("Left", UDim2.new(centerX - 0.08, 0, centerY, 0), buttonSize, "←")
     leftButton.Parent = screenGui
     leftButton.MouseButton1Click:Connect(function()
         if moveEvent then
             moveEvent:FireServer(Vector3.new(-1, 0, 0))
         end
     end)
-    
+
     -- Right button
-    local rightButton = InputHandler.createControlButton("Right", UDim2.new(centerX + 0.08, 0, centerY, 0), buttonSize, "→")
+    local rightButton =
+        InputHandler.createControlButton("Right", UDim2.new(centerX + 0.08, 0, centerY, 0), buttonSize, "→")
     rightButton.Parent = screenGui
     rightButton.MouseButton1Click:Connect(function()
         if moveEvent then
@@ -106,12 +111,12 @@ function InputHandler.createControlButton(name, position, size, text)
     button.TextColor3 = Color3.new(1, 1, 1)
     button.TextScaled = true
     button.Font = Enum.Font.SourceSansBold
-    
+
     -- Add rounded corners
     local corner = Instance.new("UICorner")
     corner.CornerRadius = UDim.new(0, 8)
     corner.Parent = button
-    
+
     return button
 end
 
@@ -123,7 +128,7 @@ end
 -- Start input handling
 function InputHandler.start()
     InputHandler.init()
-    
+
     -- Setup mobile controls if on mobile device
     if InputHandler.isMobile() then
         InputHandler.setupMobileControls()
